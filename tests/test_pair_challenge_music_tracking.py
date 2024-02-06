@@ -40,10 +40,10 @@ def test_throws_error_if_empty_string_provided():
     expected = "Please insert a song!"
     assert actual == expected
 
-# def test_throws_error_if_wrong_data_type_provided():
-#     music_tracker = Music_tracker()
-#     with pytest.raises(Exception) as e:
-#         music_tracker.add_song(5) 
-#     actual = str(e.value)
-#     expected = 'Please insert a string, you fool!'
-#     assert actual == expected
+def test_throws_error_if_wrong_data_type_provided():
+    music_tracker = Music_tracker()
+    with pytest.raises(Exception) as e:
+        music_tracker.add_song(5) 
+    actual = str(e.value)
+    expected = 'Please insert a string, you fool!'
+    assert actual == expected

@@ -8,5 +8,7 @@ class Music_tracker():
     def add_song(self, song = None):
         if song == None or song == '':
             raise Exception('Please insert a song!')
+        if not isinstance(song, str):
+            raise TypeError('Please insert a string, you fool!')
         self.song_list.append(song)
 

@@ -14,34 +14,37 @@ I want to add tracks I've listened to and see a list of them.
 _Include the initializer, public properties, and public methods with all parameters, return values, and side-effects._
 
 ```python
+#create a list which contains strings of the song titles that are to be tracked
+
+
+
+
 # EXAMPLE
 
-class Reminder:
-    # User-facing properties:
-    #   name: string
-
-    def __init__(self, name):
+    class Music_tracker():
+        def __init__(self):
+        pass
+    
         # Parameters:
-        #   name: string
+        #   name: none
         # Side effects:
-        #   Sets the name property of the self object
-        pass # No code here yet
+        #   creates a list, which will contain song titles when passed in.
 
-    def remind_me_to(self, task):
+    def add_song(self, song):
         # Parameters:
-        #   task: string representing a single task
+        #   song: a string representing the song title
         # Returns:
         #   Nothing
         # Side-effects
-        #   Saves the task to the self object
-        pass # No code here yet
+        #   appending a song to the list
+        pass
 
-    def remind(self):
+    def show_song_list(self):
         # Returns:
-        #   A string reminding the user to do the task
+        #   A list containing the song names
         # Side-effects:
-        #   Throws an exception if no task is set
-        pass # No code here yet
+        #   None
+        pass
 ```
 
 ## 3. Create Examples as Tests
@@ -52,27 +55,38 @@ _Make a list of examples of how the class will behave in different situations._
 # EXAMPLE
 
 """
-Given a name and a task
-#remind reminds the user to do the task
+initialise the music tracker and returns an empty list.
 """
-reminder = Reminder("Kay")
-reminder.remind_me_to("Walk the dog")
-reminder.remind() # => "Walk the dog, Kay!"
+music_tracker = Music_tracker()
+actual = music_tracker.show_song_list()
+expected = [] # => an empty list
 
 """
-Given a name and no task
-#remind raises an exception
+Tests if songs are added to the list
 """
-reminder = Reminder("Kay")
-reminder.remind() # raises an error with the message "No task set."
+music_tracker = Music_tracker()
+music_tracker.add_song("Stacey's Mom")
+
+actual = music_tracker.show_song_list()
+expected = ["Stacey's Mom"] # => returns list with song name in it
 
 """
-Given a name and an empty task
-#remind still reminds the user to do the task, even though it looks odd
+Tests if multiple songs are added to the list
 """
-reminder = Reminder("Kay")
-reminder.remind_me_to("")
-reminder.remind() # => ", Kay!"
+music_tracker = Music_tracker()
+music_tracker.add_song("Stacey's Mom")
+music_tracker.add_song("American Idiot")
+
+actual = music_tracker.show_song_list()
+expected = ["Stacey's Mom", "American Idiot"] # => returns list with song name in it
+
+
+"""
+Tests if missing argument is provided
+"""
+music_tracker = Music_tracker()
+actual = music_tracker.add_song() 
+expected = "Please insert a song!" # => returns list with song name in it
 ```
 
 _Encode each example as a test. You can add to the above list as you go._
